@@ -3196,7 +3196,7 @@ class Layer(MajorObject):
     def __iter__(self):
         return self
 
-    def next(self):
+    def __next__(self):
         feature = self.GetNextFeature()
         if not feature:
             raise StopIteration
@@ -7814,7 +7814,7 @@ class Geometry(_object):
         self.iter_subgeom = 0
         return self
 
-    def next(self):
+    def __next__(self):
         if self.iter_subgeom < self.GetGeometryCount():
             subgeom = self.GetGeometryRef(self.iter_subgeom)
             self.iter_subgeom += 1
